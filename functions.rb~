@@ -15,37 +15,20 @@ READING_TYPES = {
 
 #ask the user (via the command line) for a single city
 
-def query_user_for_city
-	prompt =("please enter a city of interest, either Heathrow or Bradford (you can type q, exit, q, x to close the programme): ")
-	area = gets.chomp.capitalize!
-	until area.is?("Heathrow" or "Bradford")
-		response = Readline.readline(prompt, true)
-		#we have the option to quit at any time.
-		exit if ['quit', 'exit', 'q', 'x'].include?(response)
 
-		begin
-			## need to enter entry rule
-		rescue ArgumentError
-			puts "\nInvalid city format."
-		end
-
-		area = nil unless date_valid(date)
-			
-		end
-
-	end
-	return city
-end
-def city_valid?(Bradford or Heathrow)
-	city_valid = Prompt.("please choose a city Heathrow or Bradford")
-	if city_valid.cover?("Heathrow") or ("Bradford")
+def query_user_for_city#Bradford or Heathrow
+	puts"please choose a city Heathrow or Bradford: \n"
+	city=gets.chomp
+	if(city=='Heathrow' || city =='Bradford')
+		puts "Thank you!! answer processing...."
 		return true
 	else 
 		puts "\nAnswer should be either Heathrow or Bradford. Please try again"
 		return false
+		query_user_for_city
 	end
-end
 
+end
 
 def get_readings_from_remote(area)
 	raise "invalid reading type" unless
